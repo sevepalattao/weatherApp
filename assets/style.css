@@ -18,3 +18,11 @@
     width: 25%;
     margin-left: 20px;
 }
+
+.list-group-item {
+    width:25%;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color:rgb(204, 204, 204);
+    color:black;
+}
