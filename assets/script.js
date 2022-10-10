@@ -1,11 +1,14 @@
 function getWeather (lat, lon) {
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=4013a002f8318887eb591e193340e547';
+    var requestUrl = 'https://api.openweathermap.org/data/3.0/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=4013a002f8318887eb591e193340e547&units=imperial';
     fetch(requestUrl)
       .then(function (response) {
-      return response.json();
+        return response.json();
       })
       .then(function(data) {
         console.log(data);
+        $("#temp").text('Temp: ' + data.current.temp + '°F');
+        $("#wind").text("Wind: " + data.current.wind_speed + 'MPH');
+        $("#humid").text("Humidity: " + data.current.humidity + '%');
       });
 }
 
@@ -19,13 +22,15 @@ searchBtn.on('click', function(event) {
         return response.json();
       })
       .then(function(data) {
-        getWeather(data[0].lat, data[0].lon)
+        getWeather(data[0].lat, data[0].lon);
       });
     var history = $('#history');
     var cityBtn = $('<button>');
+    capital = city.val().charAt(0).toUpperCase() + city.val().slice(1);
     cityBtn.addClass("list-group-item list-group-item-action");
-    cityBtn.text(city.val());
+    $('#name').text(capital + ' ' + moment().format("L"));
+    cityBtn.text(capital);
     history.append(cityBtn);
     city.val('');
-
 });
+
