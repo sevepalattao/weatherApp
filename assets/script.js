@@ -37,7 +37,7 @@ var searchBtn = $("#search");
 searchBtn.on('click', function(event) {
     event.preventDefault();
     var city = $("#input");
-    var urlRequest = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city.val() + '&appid=4013a002f8318887eb591e193340e547';
+    var urlRequest = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city.val() + '&appid=4013a002f8318887eb591e193340e547';
     fetch(urlRequest)
       .then(function(response) {
         return response.json();
@@ -56,7 +56,7 @@ searchBtn.on('click', function(event) {
     history.append(cityBtn);
     city.val('');
     cityBtn.on('click', function() {
-      var url = 'http://api.openweathermap.org/geo/1.0/direct?q=' + this.textContent + '&appid=4013a002f8318887eb591e193340e547';
+      var url = 'https://api.openweathermap.org/geo/1.0/direct?q=' + this.textContent + '&appid=4013a002f8318887eb591e193340e547';
       $('#name').text(this.textContent + ' ' + moment().format("L"));
       fetch(url)
         .then(function(response2) {
