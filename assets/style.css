@@ -28,7 +28,9 @@
     color:black;
 }
 
-.card {
+#currentWeather {
     width: 70%;
     margin-left: 35%;
+    position:absolute;
+    bottom: 15px;
 }
